@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -25,6 +25,14 @@
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="shadow"></div>
+            <div class="box"></div>
+        </div>
+    </div>
+    <!-- End Preloader -->
     <div id="app">
         <!-- Start Navbar Area -->
         <div class="navbar-area">
@@ -32,7 +40,7 @@
                 <div class="container">
                     <div class="aronix-responsive-menu">
                         <div class="logo">
-                            <a href="{{ url('/') }}">
+                            <a href="{{ route('index.home') }}">
                                 <img src="{{ asset('img/logo.png') }}" alt="logo">
                             </a>
                         </div>
@@ -43,14 +51,13 @@
             <div class="aronix-nav">
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
-                        <a class="navbar-brand" href="{{ url('/') }}">
+                        <a class="navbar-brand" href="{{ route('index.home') }}">
                             <img src="{{ asset('img/logo.png') }}" alt="logo">
                         </a>
 
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                             <ul class="navbar-nav">
-                                <li class="nav-item"><a href="{{ url('/') }}" class="nav-link">Cursos</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">Contacto</a></li>
+                                <li class="nav-item"><a href="{{ route('index.home') }}" class="nav-link">Cursos</a></li>
                                 @guest
                                     @if (Route::has('login'))
                                         <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Ingreso</a>
@@ -70,9 +77,12 @@
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('index.home') }}">
+                                                {{ __('Administrador') }}
+                                            </a>
                                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
+                                                                     document.getElementById('logout-form').submit();">
+                                                {{ __('Cerrar Sesion') }}
                                             </a>
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -81,8 +91,8 @@
                                             </form>
                                         </div>
                                     </li>
-                                    @endguest
-                                </ul>
+                                @endguest
+                            </ul>
                             <div class="others-options">
                                 <div class="burger-menu">
                                     <span></span>
@@ -100,10 +110,14 @@
             <div class="sidebar-modal-inner">
                 <div class="sidebar-about-area">
                     <div class="title">
-                        <h2>About Us</h2>
-                        <p>We believe brand interaction is key in communication. Real innovations and a positive
-                            customer experience are the heart of successful communication. No fake products and
-                            services. The customer is king, their lives and needs are the inspiration.</p>
+                        <h2>¡Contáctanos! Estás a un solo clic</h2>
+                        <p>
+                            Recibe toda la información acerca de nuestros bootcamps y cursos de programación virtuales y presenciales
+                            en Bogotá. <br>
+                            Se otorga certificado de asistencia a los estudiantes que logren los objetivos académicos y cumplan
+                            todos los entregables durante el bootcamp o curso. No necesitas conocimientos previos en programación
+                            para ninguno de nuestros cursos.
+                        </p>
                     </div>
                 </div>
 
@@ -126,9 +140,9 @@
                     <div class="contact-info">
                         <div class="contact-info-content">
                             <h2>
-                                <a href="tel:+0881306298615">+088 130 629 8615</a>
-                                <span>OR</span>
-                                <a href="mailto:aronix@gmail.com">aronix@gmail.com</a>
+                                <a href="tel:+573023349919">+57 302 334 9919</a>
+                                <span>o escribenos a</span>
+                                <a href="mailto:admisiones@bit.institute">admisiones@bit.institute</a>
                             </h2>
 
                             <ul class="social">
@@ -161,12 +175,12 @@
                                 <li>
                                     <i class="flaticon-phone-call"></i>
                                     <span>Lun - Vie : 08:00AM - 06:00PM</span>
-                                    <a href="#">+57 312 123 4567</a>
+                                    <a href="tel:+573023349919">+57 312 123 4567</a>
                                 </li>
                                 <li>
                                     <i class="flaticon-email"></i>
                                     <span>Tienes alguna pregunta?, escribenos</span>
-                                    <a href="#">contacto@bit.institute</a>
+                                    <a href="mailto:admisiones@bit.institute">admisiones@bit.institute</a>
                                 </li>
                                 <li>
                                     <i class="flaticon-social-media"></i>
@@ -193,14 +207,30 @@
                             <h3>Instagram</h3>
 
                             <ul class="footer-instagram-post">
-                                <li><a href="#"><img src="{{ asset('img/instagram-image/1.jpg')}}" alt="image"></a></li>
-                                <li><a href="#"><img src="{{ asset('img/instagram-image/2.jpg')}}" alt="image"></a></li>
-                                <li><a href="#"><img src="{{ asset('img/instagram-image/3.jpg')}}" alt="image"></a></li>
-                                <li><a href="#"><img src="{{ asset('img/instagram-image/4.jpg')}}" alt="image"></a></li>
-                                <li><a href="#"><img src="{{ asset('img/instagram-image/5.jpg')}}" alt="image"></a></li>
-                                <li><a href="#"><img src="{{ asset('img/instagram-image/6.jpg')}}" alt="image"></a></li>
-                                <li><a href="#"><img src="{{ asset('img/instagram-image/7.jpg')}}" alt="image"></a></li>
-                                <li><a href="#"><img src="{{ asset('img/instagram-image/8.jpg')}}" alt="image"></a></li>
+                                <li>
+                                    <a href="#"><img src="{{ asset('img/instagram-image/1.jpg') }}" alt="image"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="{{ asset('img/instagram-image/2.jpg') }}" alt="image"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="{{ asset('img/instagram-image/3.jpg') }}" alt="image"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="{{ asset('img/instagram-image/4.jpg') }}" alt="image"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="{{ asset('img/instagram-image/5.jpg') }}" alt="image"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="{{ asset('img/instagram-image/6.jpg') }}" alt="image"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="{{ asset('img/instagram-image/7.jpg') }}" alt="image"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="{{ asset('img/instagram-image/8.jpg') }}" alt="image"></a>
+                                </li>
                             </ul>
                         </div>
                     </div>

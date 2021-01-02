@@ -1,14 +1,7 @@
 @extends('layouts.app')
 @section('title', 'BIT INSTITUTE - Cursos disponibles: ')
 @section('content')
-<!-- Preloader -->
-<div class="preloader">
-    <div class="loader">
-        <div class="shadow"></div>
-        <div class="box"></div>
-    </div>
-</div>
-<!-- End Preloader -->
+
 
 <!-- Start Main Banner Area -->
 <div class="hero-banner banner-bg2">

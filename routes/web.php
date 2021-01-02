@@ -15,6 +15,6 @@ use App\Http\Controllers\indexController;
 |
 */
 
-Route::get('/', indexController::class);
+Route::get('/', indexController::class)->name('index.home');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

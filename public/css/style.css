@@ -208,7 +208,7 @@ p:last-child {
 
 .form-control {
     height: 50px;
-    border: 1px solid #eeeeee;
+    border: 1px solid #cccccc;
     background-color: transparent;
     border-radius: 0;
     -webkit-transition: 0.5s;
@@ -7406,6 +7406,22 @@ Estilos adicionales
 
 .h-fix {
     height: 100% !important;
+}
+
+.list {
+    width: 100% !important;
+}
+
+.alert-success {
+    color: #ffffff !important;
+    background-color: #54ca68 !important;
+    border-color: #54ca68 !important;
+}
+
+.alert-danger {
+    color: #ffffff !important;
+    background-color: #e63535 !important;
+    border-color: #e63535 !important;
 }
 
 

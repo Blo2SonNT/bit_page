@@ -73,7 +73,7 @@
                     <div class="post-content">
                         <div class="post-meta">
                             <ul>
-                                <li>Fecga de inicio</li>
+                                <li>Fecha de inicio</li>
                                 <li>{{ $curso->fec_inicio }}</li>
                             </ul>
                         </div>

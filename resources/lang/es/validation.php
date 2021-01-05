@@ -147,6 +147,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'fecIni' => 'fecha de inicio',
+        'fecFin' => 'fecha de finalización',
+        'imgCurso' =>'imagen del curso',
+        'nameUser' => 'nombre',
+        'fecVen' => 'fecha de vencimiento',
+    ],
 
 ];

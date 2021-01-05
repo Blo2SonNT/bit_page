@@ -29,8 +29,16 @@ class cursoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nombreCurso' => 'required',
+            'duracion' => 'required',
+            'fecIni' => 'required',
+            'fecFin' => 'required',
+            'precio' => 'required',
+            'sede' => 'required',
+            'descripcion' => 'required',
             'file' => 'required|image|max:2048'
         ]);
+
         $archivos = $request->file('file')->store('public/img/cursos');
         $url_img = Storage::url($archivos);
         $curso = new tb_curso();
@@ -38,6 +46,7 @@ class cursoController extends Controller
         $curso->horas_duracion = $request->duracion;
         $curso->fec_inicio = $request->fecIni;
         $curso->fec_fin = $request->fecFin;
+        $curso->precio = $request->precio;
         $curso->sede = $request->sede;
         $request->jornadaDia = !isset($request->jornadaDia) ? '0' : '1';
         $request->jornadaNoche = !isset($request->jornadaNoche) ? '0' : '1';
@@ -63,6 +72,15 @@ class cursoController extends Controller
 
     public function update(Request $request, $id){
         $curso=tb_curso::findOrFail($id);
+        $request->validate([
+            'nombreCurso' => 'required',
+            'duracion' => 'required',
+            'fecIni' => 'required',
+            'fecFin' => 'required',
+            'precio' => 'required',
+            'sede' => 'required',
+            'descripcion' => 'required',
+        ]);
         if($request->file != null){
             $request->validate([
                 'file' => 'image|max:2048'
@@ -75,6 +93,7 @@ class cursoController extends Controller
         $curso->horas_duracion = $request->duracion;
         $curso->fec_inicio = $request->fecIni;
         $curso->fec_fin = $request->fecFin;
+        $curso->precio = $request->precio;
         $curso->sede = $request->sede;
         $request->jornadaDia = !isset($request->jornadaDia) ? '0' : '1';
         $request->jornadaNoche = !isset($request->jornadaNoche) ? '0' : '1';

@@ -81,7 +81,7 @@
                         <h3><a href="#">{{ $curso->nom_curso }}</a></h3>
                         <p>{{ Str::limit($curso->descripcion, 80) }}</p>
 
-                        <a href="#" class="read-more-btn">Read More <i class="flaticon-right-arrow"></i></a>
+                        <a href="{{ route('user.detalle.curso', $curso->id) }}" class="read-more-btn">Ver curso <i class="flaticon-right-arrow"></i></a>
                     </div>
                 </div>
             </div>

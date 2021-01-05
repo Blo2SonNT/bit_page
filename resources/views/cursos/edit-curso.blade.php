@@ -22,40 +22,79 @@
                         @method('PUT')
                         <div class="form-group">
                             <label for="nombreCurso">Nombre del curso</label>
-                            <input type="text" class="form-control" name="nombreCurso" id="nombreCurso" value="{{ $curso->nom_curso }}" placeholder="Fundamentos de programación">
+                            <input type="text" class="form-control" name="nombreCurso" id="nombreCurso" value="{{ old('nombreCurso', $curso->nom_curso) }}"  placeholder="Fundamentos de programación">
+                            @error('nombreCurso')
+                            <p class="text-red mt-1" role="alert">
+                                <b>{{ $message }}</b>
+                            </p>
+                            @enderror
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="duracion">Duracion</label>
-                                <input type="number" min="1" class="form-control" value="{{ $curso->horas_duracion }}" id="duracion" name="duracion">
+                                <input type="number" min="1" class="form-control" value="{{ old('duracion', $curso->horas_duracion) }}" id="duracion" name="duracion">
+                                @error('duracion')
+                                <p class="text-red mt-1" role="alert">
+                                    <b>{{ $message }}</b>
+                                </p>
+                                @enderror
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="fecIni">Fecha de inicio</label>
-                                <input type="date" class="form-control" id="fecIni" value="{{ $curso->fec_inicio }}" name="fecIni">
+                                <input type="date" class="form-control" id="fecIni" value="{{ old('fecIni',$curso->fec_inicio) }}" name="fecIni">
+                                @error('fecIni')
+                                <p class="text-red mt-1" role="alert">
+                                    <b>{{ $message }}</b>
+                                </p>
+                                @enderror
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="fecFin">Fecha de finalización</label>
-                                <input type="date" class="form-control" id="fecFin" value="{{ $curso->fec_fin }}" name="fecFin">
+                                <input type="date" class="form-control" id="fecFin" value="{{ old('fecFin',$curso->fec_fin) }}" name="fecFin">
+                                @error('fecFin')
+                                <p class="text-red mt-1" role="alert">
+                                    <b>{{ $message }}</b>
+                                </p>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
+                                <label for="precio">Precio</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">$</div>
+                                    </div>
+                                    <input type="number" min="1000" class="form-control" id="precio" value="{{ old('precio',$curso->precio) }}" name="precio">
+                                </div>
+                                @error('precio')
+                                <p class="text-red mt-1" role="alert">
+                                    <b>{{ $message }}</b>
+                                </p>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-4">
                                 <label for="sede">Sede</label>
                                 {{-- construccion arreglo con items para select  --}}
                                 @php
-                                $array  = [
-                                    "Seleccione uno...",
-                                    "sede 1",
-                                    "sede 2",
+                                $array = [
+                                "Seleccione uno...",
+                                "sede 1",
+                                "sede 2",
                                 ];
                                 @endphp
                                 <select id="sede" name="sede" class="form-control w-100">
                                     @foreach($array as $item)
-                                        <option value="{{ $item }}" @if( $curso->sede == $item ) selected @endif> <span class="text-capitalize">{{ $item }}</span> </option>
+                                    <option value="{{ $item }}" @if( $curso->sede == $item ) selected @endif> <span class="text-capitalize">{{ $item }}</span> </option>
                                     @endforeach
                                 </select>
+                                @error('sede')
+                                <p class="text-red mt-1" role="alert">
+                                    <b>{{ $message }}</b>
+                                </p>
+                                @enderror
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label>Jornada</label>
                                 <div class="d-flex justify-content-around align-items-center">
                                     <div class="custom-control custom-checkbox">
@@ -71,7 +110,12 @@
                         </div>
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3">{{ $curso->descripcion }}</textarea>
+                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3">{{ old('descripcion',$curso->descripcion) }}</textarea>
+                            @error('descripcion')
+                            <p class="text-red mt-1" role="alert">
+                                <b>{{ $message }}</b>
+                            </p>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="imgCurso">Imagen promocional del curso</label>

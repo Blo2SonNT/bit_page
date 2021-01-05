@@ -21,32 +21,71 @@
                         @csrf
                         <div class="form-group">
                             <label for="nombreCurso">Nombre del curso</label>
-                            <input type="text" class="form-control" name="nombreCurso" id="nombreCurso" placeholder="Fundamentos de programación">
+                            <input type="text" class="form-control" name="nombreCurso" id="nombreCurso" placeholder="Fundamentos de programación" value="{{ old('nombreCurso') }}">
+                            @error('nombreCurso')
+                            <p class="text-red mt-1" role="alert">
+                                <b>{{ $message }}</b>
+                            </p>
+                            @enderror
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="duracion">Duracion</label>
-                                <input type="number" min="1" class="form-control" id="duracion" name="duracion">
+                                <input type="number" min="1" class="form-control" id="duracion" name="duracion" value="{{ old('duracion') }}">
+                                @error('duracion')
+                                <p class="text-red mt-1" role="alert">
+                                    <b>{{ $message }}</b>
+                                </p>
+                                @enderror
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="fecIni">Fecha de inicio</label>
-                                <input type="date" class="form-control" id="fecIni" name="fecIni">
+                                <input type="date" class="form-control" id="fecIni" name="fecIni" value="{{ old('fecIni') }}">
+                                @error('fecIni')
+                                <p class="text-red mt-1" role="alert">
+                                    <b>{{ $message }}</b>
+                                </p>
+                                @enderror
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="fecFin">Fecha de finalización</label>
-                                <input type="date" class="form-control" id="fecFin" name="fecFin">
+                                <input type="date" class="form-control" id="fecFin" name="fecFin" value="{{ old('fecFin') }}">
+                                @error('fecFin')
+                                <p class="text-red mt-1" role="alert">
+                                    <b>{{ $message }}</b>
+                                </p>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
+                                <label for="precio">Precio</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">$</div>
+                                    </div>
+                                    <input type="number" min="1000" class="form-control" id="precio" name="precio" value="{{ old('precio') }}">
+                                </div>
+                                @error('precio')
+                                <p class="text-red mt-1" role="alert">
+                                    <b>{{ $message }}</b>
+                                </p>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-4">
                                 <label for="sede">Sede</label>
                                 <select id="sede" name="sede" class="form-control w-100">
-                                    <option selected>Seleccione una...</option>
+                                    <option>Seleccione una...</option>
                                     <option value="sede 1">Sede 1</option>
                                     <option value="sede 2">Sede 1</option>
                                 </select>
+                                @error('sede')
+                                <p class="text-red mt-1" role="alert">
+                                    <b>{{ $message }}</b>
+                                </p>
+                                @enderror
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label>Jornada</label>
                                 <div class="d-flex justify-content-around align-items-center">
                                     <div class="custom-control custom-checkbox">
@@ -62,7 +101,12 @@
                         </div>
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
+                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3">{{ old('descripcion') }}</textarea>
+                            @error('descripcion')
+                            <p class="text-red mt-1" role="alert">
+                                <b>{{ $message }}</b>
+                            </p>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="imgCurso">Imagen promocional del curso</label>

@@ -35,6 +35,7 @@
                                     @if ($curso->jornada_nocturna == '1')
                                         <p class="h6">Jornada nocturna&nbsp;&nbsp;<i class="fas fa-moon"></i></p>
                                     @endif
+                                    <p class="h4">Precio: ${{ number_format($curso->precio) }}</p>
                                     <div class="d-flex flex-row-reverse bd-highlight">
                                         <a href="{{ route('admin.curso.edit', $curso->id) }}"><button type="button" class="btn btn-dark btn-md">Editar</button></a>
                                     </div>

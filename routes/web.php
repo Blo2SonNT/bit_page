@@ -4,6 +4,10 @@ use App\Http\Controllers\cursoController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\indexController;
+use App\Http\Controllers\userController;
+use Illuminate\Http\Request;
+use App\Mail\cursosMailable;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +39,20 @@ Route::get('/adm-curso/curso/{id}/edit', [cursoController::class, 'edit'])->name
 Route::put('/adm-curso/curso/{id}/update', [cursoController::class, 'update'])->name('admin.curso.update');
 
 Route::delete('/adm-curso/curso/{id}/delete', [cursoController::class, 'destroy'])->name('admin.curso.delete');
+
+Route::get('/curso/{id}', [userController::class, 'view'])->name('user.detalle.curso');
+
+Route::get('/inscripciones', function (Request $request) {
+    $request->validate([
+        'nameUser' => 'required',
+        'email' => 'required',
+        'documento' => 'required',
+        'telefono' => 'required',
+        'tarjeta' => 'required',
+        'ccv' => 'required',
+        'fecVen' => 'required',
+    ]);
+    $correo = new cursosMailable;
+    Mail::to($request->email)->send($correo);
+    return view('pago-confirmado');
+})->name('email.inscripcion');
